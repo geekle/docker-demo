@@ -1,5 +1,5 @@
 FROM geekle/centos
-ADD ../../../ /app
+ADD . /app
 WORKDIR /app
 RUN bundle install --path vendor/bundle
 VOLUME ["/var/run/unicorn", "/app"]
