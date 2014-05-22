@@ -1,0 +1,12 @@
+[Unit]
+Description=Docker Registry Announce
+BindsTo=unicorn.service
+
+[Service]
+ExecStartPre=/usr/bin/docker pull geekle/demo-nginx
+ExecStart=/usr/bin/docker run --rm --name %n geekle/demo-nginx
+ExecStop=/usr/bin/docker stop %n
+
+[X-Fleet]
+X-ConditionMachineOf=unicorn.service
+
